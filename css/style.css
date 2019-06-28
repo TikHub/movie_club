@@ -1,0 +1,250 @@
+/*
+  Prefix: mc-
+*/
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.mc-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.schedule {
+  height: 160px;
+  width: 480px;
+  margin: 0 auto;
+  position: relative;
+  /* background-image: url(../assets/21_step1.png); */
+  /* animation: lightChanging 1s ease-in-out alternate infinite both; */
+  transform: translateY(10px);
+  transition: 0s;
+}
+.schedule--step1,
+.schedule--step2 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.schedule--step1 {
+  background-image: url(../assets/21_step1.png);
+  opacity: 1;
+  animation: lightChangingStep1 0.3s 1s infinite alternate both;
+}
+.schedule--step2 {
+  background-image: url(../assets/21_step2.png);
+  opacity: 0;
+  animation: lightChangingStep2 0.3s 1s infinite alternate both;
+}
+@keyframes lightChanging {
+  from {
+    background-image: url("../assets/21_step1.png");
+  }
+  to {
+    background-image: url("../assets/21_step2.png");
+  }
+}
+@keyframes lightChangingStep1 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes lightChangingStep2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.schedule__texts {
+  height: 50px;
+  width: 400px;
+  position: absolute;
+  top: 60px;
+  left: 40px;
+}
+.schedule__firstText {
+  height: 100%;
+  width: 140px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.schedule__secondText {
+  height: 100%;
+  width: 250px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.schedule__firstText svg {
+  animation: firstText 3s linear 1;
+}
+.schedule__secondText svg {
+  animation: firstText 3s linear 1;
+}
+
+@keyframes firstText {
+  0% {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+  20% {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 400;
+  }
+  40% {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 600;
+  }
+  60% {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 800;
+  }
+  80% {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 300;
+  }
+  100% {
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 0;
+  }
+}
+
+.products {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.prod {
+  pointer-events: none;
+  position: absolute;
+  transition: 0.1s linear;
+}
+.prod:hover {
+  filter: blur(1px);
+}
+.prod__ghostWrapper {
+  height: 120px;
+  width: 200px;
+  overflow: hidden;
+  position: absolute;
+  top: 40px;
+  right: 1%;
+  animation: ghostLevitation 2s 4s infinite alternate forwards;
+}
+.prod__ghost {
+  height: 100px;
+  width: 100px;
+  background-image: url(../assets/ghost.png);
+  position: absolute;
+  bottom: -300px;
+  left: 0;
+  animation: ghostAppearence 0.4s ease-out 3s forwards;
+}
+.prod__ghostSpeech {
+  height: 60px;
+  width: 100px;
+  background-image: url(../assets/ghostSpeech.png);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: scale(0);
+  animation: ghostSpeechAppearence 0.01s ease-in 4s forwards;
+}
+@keyframes ghostAppearence {
+  0% {
+    bottom: -300px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+@keyframes ghostSpeechAppearence {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes ghostLevitation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.prod__lays {
+  height: 100px;
+  width: 100px;
+  background-image: url("../assets/1_png.png");
+  left: 30px;
+  bottom: 160px;
+}
+.prod__popcorn {
+  height: 100px;
+  width: 100px;
+  background-image: url("../assets/2_png.png");
+  left: 50px;
+  bottom: 15px;
+}
+.prod__pringles {
+  height: 100px;
+  width: 80px;
+  background-image: url("../assets/6_png.png");
+  right: 400px;
+  bottom: 30px;
+}
+.prod__cola {
+  height: 80px;
+  width: 80px;
+  background-image: url("../assets/7_png.png");
+  right: 600px;
+  bottom: 30px;
+}
+.prod__pepsi {
+  height: 80px;
+  width: 80px;
+  background-image: url("../assets/8_png.png");
+  right: 40px;
+  bottom: 60px;
+}
+.prod__movieClap {
+  height: 80px;
+  width: 80px;
+  background-image: url("../assets/3_png.png");
+  right: 140px;
+  bottom: 60px;
+}
+.prod__freshBottle {
+  height: 80px;
+  width: 80px;
+  background-image: url("../assets/5_png.png");
+  left: 300px;
+  bottom: 60px;
+}
