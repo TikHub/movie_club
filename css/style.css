@@ -10,6 +10,7 @@ body {
   width: 100%;
 }
 body {
+  background-color: #efefef;
   margin: 0;
   padding: 0;
   position: relative;
@@ -125,6 +126,62 @@ body {
     stroke-dasharray: 1100;
     stroke-dashoffset: 0;
   }
+}
+
+/* Movie */
+.movie {
+  display: flex;
+  justify-content: space-around;
+}
+.movie__col {
+  flex-basis: 400px;
+}
+.movie__data {
+  color: #000;
+  font-size: 16px;
+  /* font-style: italic; */
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 2px;
+  display: flex;
+}
+.movie__data::before {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  display: block;
+  margin-right: 5px;
+}
+.movie__title::before {
+  content: "Title: ";
+}
+.movie__duration::before {
+  content: "Duration: ";
+}
+.movie__imdbRating::before {
+  content: "IMDb Rating: ";
+}
+.movie__year::before {
+  content: "Year: ";
+}
+.movie__country::before {
+  content: "Country: ";
+}
+.movie__runtime::before {
+  content: "Runtime: ";
+}
+.movie__released::before {
+  content: "Released: ";
+}
+.movie__actors::before {
+  content: "Actors: ";
+}
+.movie__genre::before {
+  content: "Genre: ";
+}
+.movie__director::before {
+  content: "Director: ";
 }
 
 .products {

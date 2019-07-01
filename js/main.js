@@ -22,22 +22,53 @@ body.addEventListener("mousemove", function(e) {
     90}px)`;
 });
 
-function getMovieData() {
-  // debugger;
-  var request = new Request(
-    encodeURI(
-      "http://www.omdbapi.com/?apikey=2fed1d4&t=snatch&plot=full&r=json"
-    ),
-    {
-      method: "GET",
-      mode: "no-cors",
-      redirect: "follow",
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    }
-  );
-  fetch(request).then(function(response) {
-    console.log("responce ", response);
-  });
+let movieTitle = "mama";
+let URL = encodeURI(
+  `http://www.omdbapi.com/?apikey=2fed1d4&t=${movieTitle}&plot=full&r=json`
+);
+// function getMovieData() {
+//   // debugger;
+//   var request = new Request(
+//     encodeURI(
+//       "http://www.omdbapi.com/?apikey=2fed1d4&t=snatch&plot=full&r=json"
+//     ),
+//     {
+//       method: "GET",
+//       mode: "no-cors",
+//       redirect: "follow",
+//       headers: new Headers({
+//         "Content-Type": "application/json"
+//       })
+//     }
+//   );
+//   fetch(request).then(function(response) {
+//     console.log("responce ", response);
+//   });
+// }
+function movieData(classSelector, data, dataType) {
+  var element = document.querySelector(`.${classSelector}`);
+  return (element.innerText = data[dataType]);
 }
+setTimeout(() => {
+  (function getMovieData() {
+    fetch(URL)
+      .then(response => response.json())
+      .then(json => {
+        var poster = document.querySelector(".poster");
+        poster.src = json.Poster;
+        poster.alt = `${json.Title} poster`;
+        movieData("movie__title", json, "Title");
+        movieData("movie__runtime", json, "Runtime");
+        movieData("movie__imdbRating", json, "imdbRating");
+        movieData("movie__year", json, "Year");
+        movieData("movie__country", json, "Country");
+        movieData("movie__released", json, "Released");
+        movieData("movie__actors", json, "Actors");
+        movieData("movie__genre", json, "Genre");
+        movieData("movie__director", json, "Director");
+        movieData("movie__plot", json, "Plot");
+        // document.querySelector(".aaa").textContent = json["Title"];
+        // console.log(json);
+      });
+  })();
+}, 0);
